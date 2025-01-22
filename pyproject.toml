@@ -3,9 +3,9 @@ name = "web_crawler"
 version = "1.0.0"
 description = "Default template for PDM package"
 authors = [
-    {name = "Baris", email = "baris.yapici@scai.fraunhofer.de"},
+    {name = "Baris Yapici", email = "baris.yapici@scai.fraunhofer.de"},
 ]
-dependencies = ["requests>=2.32.3", "beautifulsoup4>=4.12.3", "selenium>=4.6.0"]
+dependencies = ["requests>=2.32.3", "selenium>=4.6.0"]
 requires-python = ">=3.12"
 readme = "README.md"
 license = {text = "MIT"}
