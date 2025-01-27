@@ -8,6 +8,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 # Configure paths
 SAVE_DIRECTORY = r'C:\workspace\SCAI\web_crawler\data\html_store'
@@ -26,8 +27,8 @@ def initialize_driver():
     options.add_argument('--headless')  # Run in headless mode for silent execution
     options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36')
     
-    # Initialize the Chrome driver without specifying the path
     driver = webdriver.Chrome(options=options)
+    driver.set_page_load_timeout(15)  # Set a page load timeout of 15 seconds
     return driver
 
 def fetch_links(driver, url):
@@ -43,14 +44,18 @@ def fetch_links(driver, url):
     """
     try:
         driver.get(url)
+        
+        # Wait for at least one link to appear with a timeout
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.TAG_NAME, 'a'))
-        )  # Wait until at least one link is present
+        )
 
-        # Find all links on the page
         links = driver.find_elements(By.TAG_NAME, 'a')
         urls = [link.get_attribute('href') for link in links if link.get_attribute('href')]
         return urls
+    except TimeoutException:
+        print(f"Page load timeout for {url}, skipping...")
+        return []
     except Exception as e:
         print(f"Error fetching links from {url}: {e}")
         return []
@@ -97,14 +102,17 @@ def visit_and_save(driver, url, depth=0, max_depth=1, visited=set()):
     # Generate a unique filename using a hash of the URL
     url_hash = hashlib.md5(url.encode()).hexdigest()
     filename = os.path.join(SAVE_DIRECTORY, f"{depth}_{url_hash}.html")
-    download_html(url, filename)
+
+    try:
+        download_html(url, filename)
+    except Exception as e:
+        print(f"Failed to download {url}: {e}")
+        return
 
     if depth < max_depth:
-        # Fetch and visit links on the current page
         links = fetch_links(driver, url)
         for link in links:
-            # Introduce a random delay between visits
-            time.sleep(random.uniform(1, 5))  # Wait between 1 to 5 seconds
+            time.sleep(random.uniform(1, 5))  # Wait a random time between 1 to 5 seconds
             visit_and_save(driver, link, depth + 1, max_depth, visited)
 
 def main():
