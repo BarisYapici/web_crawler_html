@@ -110,7 +110,7 @@ The cleaned text files will be saved in a designated directory (e.g., `cleaned_t
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
 
 ## Contributing
 
