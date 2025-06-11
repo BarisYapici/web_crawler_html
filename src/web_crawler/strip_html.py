@@ -32,7 +32,7 @@ def clean_html_folder(html_folder_path, output_folder_path):
         text_content = ' '.join(text_content.split())
 
         # Define the output file path
-        output_file_name = os.path.splitext(html_file)[0] + '.txt'
+        output_file_name = os.path.splitext(html_file)[0] + '.md'
         output_file_path = os.path.join(output_folder_path, output_file_name)
 
         # Write the cleaned text to the output file
@@ -43,7 +43,7 @@ def clean_html_folder(html_folder_path, output_folder_path):
 
 if __name__ == "__main__":
     # Replace these paths with your actual folder paths
-    html_folder = r"C:\workspace\SCAI\web_crawler\data\html_store"
+    html_folder = r"C:\workspace\SCAI\web_crawler\data\html_test"
     output_folder = r"C:\workspace\SCAI\web_crawler\data\stripped_htmls"
 
     clean_html_folder(html_folder, output_folder)

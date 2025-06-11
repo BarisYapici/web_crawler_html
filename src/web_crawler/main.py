@@ -120,7 +120,8 @@ def main():
     Main function to initialize the crawler and start visiting URLs.
     """
     start_urls = [
-        "https://www.ihi.europa.eu/projects-results/project-factsheets"
+        "https://www.ihi.europa.eu/projects-results/project-factsheets?keywords=&type=All&status=1&call=All&programmes=All&disease_areas=All&products=All&tools=All",
+
     ]
     
     driver = initialize_driver()
