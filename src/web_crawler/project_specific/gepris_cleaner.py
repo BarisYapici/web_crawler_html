@@ -79,3 +79,4 @@ if __name__ == "__main__":
     INPUT_DIR = r"C:\workspace\SCAI\web_crawler\data\html_test"
     OUTPUT_FILE = os.path.join(INPUT_DIR, "all_projects.csv")
     aggregate_all_html(INPUT_DIR, OUTPUT_FILE)
+

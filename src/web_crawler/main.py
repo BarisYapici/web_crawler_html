@@ -120,14 +120,14 @@ def main():
     Main function to initialize the crawler and start visiting URLs.
     """
     start_urls = [
-        "https://www.ihi.europa.eu/projects-results/project-factsheets?keywords=&type=All&status=1&call=All&programmes=All&disease_areas=All&products=All&tools=All",
+        "https://cordis.europa.eu/project/id/101057775",
 
     ]
     
     driver = initialize_driver()
     try:
         for url in start_urls:
-            visit_and_save(driver, url, max_depth=1)
+            visit_and_save(driver, url, max_depth=0)
     finally:
         driver.quit()
 

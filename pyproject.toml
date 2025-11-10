@@ -5,7 +5,14 @@ description = "Default template for PDM package"
 authors = [
     {name = "Baris Yapici", email = "baris.yapici@scai.fraunhofer.de"},
 ]
-dependencies = ["requests>=2.32.3", "selenium>=4.6.0", "bs4>=0.0.2"]
+dependencies = [
+    "requests>=2.32.3", 
+    "selenium>=4.6.0", 
+    "bs4>=0.0.2", 
+    "lxml>=6.0.1",
+    "fuzzywuzzy>=0.18.0",
+    "python-levenshtein>=0.12.0"
+]
 requires-python = ">=3.12"
 readme = "README.md"
 license = {text = "MIT"}

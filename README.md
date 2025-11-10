@@ -1,6 +1,26 @@
-# Web Crawler Tool
+# CORDIS XML Collection & RAXKG Integration
 
-This is a web crawler tool that allows you to download and process web pages starting from a list of URLs. The tool uses Selenium and Requests to navigate and fetch web pages, Beautiful Soup to clean and extract text content.
+<div align="center">
+
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
+[![Selenium](https://img.shields.io/badge/selenium-4.6%2B-green.svg)](https://pypi.org/project/selenium/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+*Automated CORDIS project data collection with intelligent matching and knowledge graph integration*
+
+</div>
+
+## Overview
+
+This system provides **end-to-end automation** for collecting EU research project data from CORDIS (Community Research and Development Information Service) and integrating it with the RAXKG (Research Analytics eXploration Knowledge Graph) pipeline.
+
+## Purpose
+
+This system automates the process of:
+1. **Searching CORDIS** for projects by name/acronym/ID
+2. **Downloading XML files** with project data
+3. **Building knowledge graphs** using the RAXKG pipeline
+4. **Importing to Neo4j** for querying and visualization
 ## Features
 
 - **Headless Browsing:** Utilizes Selenium's headless mode to quietly navigate and fetch web pages without opening a browser window.
